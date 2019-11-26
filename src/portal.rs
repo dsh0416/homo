@@ -39,3 +39,9 @@ impl Portal {
         }
     }
 }
+
+impl PartialEq for Portal {
+    fn eq(&self, other: &Self) -> bool {
+        self.guid == other.guid
+    }
+}

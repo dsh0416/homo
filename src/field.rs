@@ -18,7 +18,10 @@ impl<'a> Field<'a> {
     }
 
     pub fn contains(&self, t: &Portal) -> bool {
-        false
+        if t == self.portals[0] || t == self.portals[1] || t == self.portals[2] {
+            return false;
+        }
+        true
     }
 
     fn spherical_angle(a: &Portal, b: &Portal, c: &Portal) -> f64 {
