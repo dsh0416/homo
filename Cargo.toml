@@ -1,0 +1,12 @@
+[package]
+name = "homo"
+version = "0.1.0"
+authors = ["Delton Ding <dsh0416@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "homo"
+crate-type = ["rlib", "cdylib", "staticlib"]
+
+[dependencies]
+libc = "0.2"
