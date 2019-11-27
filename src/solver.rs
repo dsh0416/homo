@@ -8,10 +8,7 @@ pub struct Solver {
 }
 
 impl Solver {
-    pub fn new(path: String) -> Solver {
-        let mut file = File::open(path).unwrap();
-        let mut contents = String::new();
-        file.read_to_string(&mut contents).unwrap();
+    pub fn from_string(contents: String) -> Solver {
         let mut portals = vec![];
 
         let data: Value = serde_json::from_str(&contents.to_string()).unwrap();
@@ -28,7 +25,12 @@ impl Solver {
         Solver { portals: portals }
     }
 
-    pub fn solve(&self) {
-        
+    pub fn from_file(path: String) -> Solver {
+        let mut file = File::open(path).unwrap();
+        let mut contents = String::new();
+        file.read_to_string(&mut contents).unwrap();
+        Self::from_string(contents)
     }
+
+    pub fn solve(&self) {}
 }
