@@ -3,7 +3,7 @@ use std::f64::consts::PI;
 
 pub struct Field<'a> {
     pub portals: [&'a Portal; 3],
-    pub area: f64,
+    pub area: f64, // The area of the field on a sphere which r=1
 }
 
 impl<'a> Field<'a> {
