@@ -1,6 +1,7 @@
 use crate::portal::{Portal, Position};
 use std::f64::consts::PI;
 
+#[derive(Copy, Clone)]
 pub struct Field<'a> {
     pub portals: [&'a Portal; 3],
     pub area: f64, // The area of the field on a sphere which r=1
@@ -52,9 +53,9 @@ impl<'a> Field<'a> {
             z: b.position.x * y1 - b.position.y * x1,
         };
 
-        return ((tmp0.x * tmp1.x + tmp0.y * tmp1.y + tmp0.z * tmp1.z)
+        ((tmp0.x * tmp1.x + tmp0.y * tmp1.y + tmp0.z * tmp1.z)
             / (tmp0.x * tmp0.x + tmp0.y * tmp0.y + tmp0.z * tmp0.z).sqrt()
             / (tmp1.x * tmp1.x + tmp1.y * tmp1.y + tmp1.z * tmp1.z).sqrt())
-        .acos();
+        .acos()
     }
 }
