@@ -38,6 +38,15 @@ impl Portal {
             label: label,
         }
     }
+
+    // If self is at the left side of vector a -> b
+    pub fn is_left(&self, a: &Portal, b: &Portal) -> bool {
+        let x0 = a.position.y * b.position.z - a.position.z * b.position.y;
+        let y0 = a.position.z * b.position.x - a.position.x * b.position.z;
+        let z0 = a.position.x * b.position.y - a.position.y * b.position.x;
+
+        a.position.x * x0 + a.position.y * y0 + a.position.z * z0 > 0.0
+    }
 }
 
 impl PartialEq for Portal {

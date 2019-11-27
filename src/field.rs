@@ -21,7 +21,16 @@ impl<'a> Field<'a> {
         if t == self.portals[0] || t == self.portals[1] || t == self.portals[2] {
             return false;
         }
-        true
+
+        if self.portals[2].is_left(self.portals[0], self.portals[1]) {
+            return t.is_left(self.portals[0], self.portals[2])
+                && t.is_left(self.portals[2], self.portals[1])
+                && t.is_left(self.portals[1], self.portals[0]);
+        }
+
+        t.is_left(self.portals[0], self.portals[1])
+            && t.is_left(self.portals[1], self.portals[2])
+            && t.is_left(self.portals[2], self.portals[0])
     }
 
     fn spherical_angle(a: &Portal, b: &Portal, c: &Portal) -> f64 {
