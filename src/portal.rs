@@ -18,7 +18,7 @@ pub struct Portal {
 
 impl Portal {
     pub fn new(guid: String, latlng: String, label: String) -> Portal {
-        let mut tmp_latlng = latlng.split_whitespace();
+        let mut tmp_latlng = latlng.split(",");
 
         let lat: f64 = tmp_latlng.next().unwrap().parse().unwrap();
         let lng: f64 = tmp_latlng.next().unwrap().parse().unwrap();
